@@ -1,13 +1,11 @@
 import Todo from "./Todo";
 
 function TodoList({ list }) {
-    console.log('todolist')
   return (
     <div>
-      <h1>ToDoList</h1>
-      {list.map((item) => {
+      {list.map((item, index) => {
         return (
-            <Todo content={item}/>
+            <Todo content={item} key={index}/>
             )
       })}
     </div>

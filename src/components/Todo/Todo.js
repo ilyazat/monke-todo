@@ -1,7 +1,11 @@
+import styles from './Todo.module.css'
+
 function Todo({ content }) {
-    console.log('todo')
-  return (<h1>{content}</h1>
-  );
+  return(<>
+  <div className={styles.todo_card}>
+  
+  <p>{content}</p></div>
+  </>);
 }
 
 export default Todo;
