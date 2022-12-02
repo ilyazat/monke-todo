@@ -1,22 +1,30 @@
-import styles from './TodoForm.module.css'
+import { useState } from "react";
+import styles from "./TodoForm.module.css";
+import Button from "../UI/Button";
 
-function TodoForm ({ addToDo }) {
-    function callAddToDo (event) {
-        event.preventDefault()
-        addToDo(event.target.todo.value)
-        event.target.todo.value = ''
-        
-        
-    }
-
-    return (<div className={styles.todoFormContainer}>
-        <form onSubmit={callAddToDo}>
-            <input type="text" name="todo" placeholder="Enter new todo"/>
-            <button type="submit">Submit</button>
-        </form>
-      
-        </div>
-    )
+function TodoForm({ addToDo }) {
+  const [text, setText] = useState("");
+  function callAddToDo(event) {
+    event.preventDefault();
+    addToDo(text);
+    setText("");
+  }
+  return (
+    <div className={styles.todoFormContainer}>
+      <form onSubmit={callAddToDo}>
+        <input
+          placeholder="Enter new todo"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        />
+        <Button type="submit" title="Sumbit">
+          Submit
+        </Button>
+      </form>
+    </div>
+  );
 }
 
-export default TodoForm
+export default TodoForm;
